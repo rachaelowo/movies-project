@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+
+<h1>Edit Movie</h1>
+
+<form action="/movies/<%= movie._id %>?_method=PUT" method="POST">
+
+    <label>Title</label>
+    <input type="text" name="title" value="<%= movie.title %>" required>
+
+    <label>Description</label>
+    <textarea name="description" required><%= movie.description %></textarea>
+
+    <label>Year</label>
+    <input type="number" name="year" value="<%= movie.year %>" required>
+
+    <label>Genres (comma separated)</label>
+    <input type="text" name="genres" value="<%= movie.genres.join(', ') %>" required>
+
+    <label>Rating (0–10)</label>
+    <input type="number" name="rating" min="0" max="10" value="<%= movie.rating %>" required>
+
+    <label>Poster URL</label>
+    <input type="text" name="poster" value="<%= movie.poster %>">
+
+    <button type="submit">Update Movie</button>
+</form>
+
+<%- include('../partials/footer') %>

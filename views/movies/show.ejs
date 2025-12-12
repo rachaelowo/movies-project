@@ -1,0 +1,24 @@
+<%- include('../partials/header') %>
+
+<h1><%= movie.title %></h1>
+
+<p><strong>Description:</strong> <%= movie.description %></p>
+<p><strong>Year:</strong> <%= movie.year %></p>
+<p><strong>Genres:</strong> <%= movie.genres.join(', ') %></p>
+<p><strong>Rating:</strong> <%= movie.rating %></p>
+
+<% if (movie.poster) { %>
+    <img src="<%= movie.poster %>" width="200">
+<% } %>
+
+<p>Added by: <%= movie.user.username %></p>
+
+<% if (user && user.id == movie.user.id) { %>
+    <a href="/movies/<%= movie._id %>/edit">Edit</a>
+
+    <form action="/movies/<%= movie._id %>?_method=DELETE" method="POST">
+        <button type="submit">Delete</button>
+    </form>
+<% } %>
+
+<%- include('../partials/footer') %>

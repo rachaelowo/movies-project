@@ -1,0 +1,28 @@
+<%- include('../partials/header') %>
+
+<h1>Register</h1>
+
+<form action="/auth/register" method="POST">
+
+    <% if (typeof errors !== 'undefined') { %>
+        <% errors.forEach(error => { %>
+            <p class="error"><%= error.msg %></p>
+        <% }) %>
+    <% } %>
+
+    <label>Username</label>
+    <input type="text" name="username" value="<%= username %>" required>
+
+    <label>Email</label>
+    <input type="email" name="email" value="<%= email %>" required>
+
+    <label>Password</label>
+    <input type="password" name="password" required>
+
+    <label>Confirm Password</label>
+    <input type="password" name="password2" required>
+
+    <button type="submit">Register</button>
+</form>
+
+<%- include('../partials/footer') %>

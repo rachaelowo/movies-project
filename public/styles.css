@@ -1,0 +1,242 @@
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('/images/movieee.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    color: white;
+    padding-top: 70px;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0; 
+    right: 0; 
+    width: 100%; 
+    z-index: 1000; 
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 40px;
+    box-sizing: border-box;
+}
+
+header h1, .app-name {
+    margin: 0;
+    font-size: 24px;
+    text-align: center;
+    color: white;
+    font-weight: 600;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap;
+    padding: 8px 12px;
+    transition: 0.2s ease;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+
+main, .container {
+    max-width: 900px;
+    margin: 80px auto 60px auto;
+    padding: 20px 25px;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    padding-bottom: 60px; 
+}
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+form label {
+    margin: 10px 0 5px;
+    font-weight: 600;
+    color: #fff;
+}
+
+form input, 
+form select, 
+form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: rgba(255,255,255,0.2);
+    color: white;
+}
+
+form input::placeholder,
+form textarea::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+form button {
+    width: 150px;
+    padding: 10px;
+    background: #3B82F6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.3s;
+}
+
+form button:hover {
+    background-color: #2563EB;
+    transform: translateY(-2px);
+}
+
+
+.success {
+    color: #2ecc71;
+    background: rgba(46, 204, 113, 0.2);
+    padding: 10px;
+    border-left: 5px solid #2ecc71;
+    margin-bottom: 15px;
+}
+
+.error {
+    color: #ff4c4c;
+    background: rgba(255, 76, 76, 0.2);
+    padding: 10px;
+    border-left: 5px solid #ff4c4c;
+    margin-bottom: 15px;
+}
+
+
+.movie-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 0 30px;
+}
+
+.movie-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+.movie-card h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    color: white;
+    font-size: 24px;
+}
+
+.movie-card p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin: 8px 0;
+    color: white;
+    text-align: left;
+}
+
+
+.btn, .add-btn, .auth-btn {
+    display: inline-block;
+    width: 120px;
+    text-align: center;
+    padding: 8px 0;
+    background: #3B82F6;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: 0.25s ease;
+    font-weight: 600;
+}
+
+.btn:hover, .add-btn:hover, .auth-btn:hover {
+    background-color: #2563EB;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.action-buttons .edit-btn {
+    background: #ffaa00;
+    color: #553c00;
+}
+
+.action-buttons .delete-btn {
+    background: #d9534f;
+    color: white;
+}
+
+.action-buttons .edit-btn:hover {
+    background: #e69900;
+}
+
+.action-buttons .delete-btn:hover {
+    background: #c9302c;
+}
+
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    z-index: 999;
+}
+
