@@ -9,15 +9,15 @@
         <nav>
             <a href="/">Home</a>
 
-            <% if (typeof user !== 'undefined') { %>
-                <a href="/dashboard">Dashboard</a>
-                <a href="/movies">Movies</a>
-                <a href="/movies/new">Add Movie</a>
-                <a href="/auth/logout">Logout</a>
-            <% } else { %>
-                <a href="/auth/login">Login</a>
-                <a href="/auth/register">Register</a>
-            <% } %>
+            <% if (user) { %>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/movies">Movies</a>
+            <a href="/movies/new">Add Movie</a>
+            <a href="/auth/logout">Logout</a>
+        <% } else { %>
+            <a href="/auth/register">Register</a>
+            <a href="/auth/login">Login</a>
+        <% } %>
         </nav>
     </header>
 
@@ -29,6 +29,4 @@
         <p class="error"><%= error_msg %></p>
     <% } %>
 
-    <% if (error) { %>
-        <p class="error"><%= error %></p>
-    <% } %>
+   

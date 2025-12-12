@@ -2,16 +2,8 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
-
-// Load User Model
 const User = require('../models/User');
 
-// Login Page
-router.get('/login', (req, res) => {
-    res.render('auth/login');
-});
-
-// Register Page
 router.get('/register', (req, res) => {
     res.render('auth/register', {
         errors: [],
@@ -22,12 +14,10 @@ router.get('/register', (req, res) => {
     });
 });
 
-// Register Handler
 router.post('/register', async (req, res) => {
     const { username, email, password, password2 } = req.body;
     let errors = [];
 
-    // Validation
     if (!username || !email || !password || !password2) {
         errors.push({ msg: 'Please fill in all fields' });
     }
@@ -43,16 +33,13 @@ router.post('/register', async (req, res) => {
     }
 
     try {
-        const existingUser = await User.findOne({ email: email });
+        const existingUser = await User.findOne({ email });
         if (existingUser) {
             errors.push({ msg: 'Email already exists' });
             return res.render('auth/register', { errors, username, email, password, password2 });
         }
 
-        // Create new user
         const newUser = new User({ username, email, password });
-
-        // Hash password
         const salt = await bcrypt.genSalt(10);
         newUser.password = await bcrypt.hash(password, salt);
 
@@ -66,7 +53,10 @@ router.post('/register', async (req, res) => {
     }
 });
 
-// Login Handler
+router.get('/login', (req, res) => {
+    res.render('auth/login');
+});
+
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', {
         successRedirect: '/dashboard',
@@ -75,13 +65,16 @@ router.post('/login', (req, res, next) => {
     })(req, res, next);
 });
 
-// Logout Handler
 router.get('/logout', (req, res, next) => {
-    req.logout(err => {
-        if (err) return next(err);
-        req.flash('success_msg', 'You are logged out');
+    if (req.isAuthenticated()) {
+        req.logout(err => {
+            if (err) return next(err);
+            req.flash('success_msg', 'You are logged out');
+            res.redirect('/auth/login');
+        });
+    } else {
         res.redirect('/auth/login');
-    });
+    }
 });
 
 module.exports = router;
